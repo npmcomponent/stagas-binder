@@ -42,9 +42,7 @@ exports.on = function(el, event, selector, fn, capture){
 };
 
 /**
- * Unbind to `event` for `el` and invoke `fn(e)`.
- * When a `selector` is given then delegated event
- * handlers are unbound.
+ * Unbind `event` listener `fn` for `el`.
  *
  * @param {Element} el
  * @param {String} event

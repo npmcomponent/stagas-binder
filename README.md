@@ -21,9 +21,7 @@ When a `selector` is given then events are delegated.
 ### binder.off(`el`, `event`, `[selector]`, `fn`, `[capture]`)
 > _returns_ el
 
-Unbind to `event` for `el` and invoke `fn(e)`.
-When a `selector` is given then delegated event
-handlers are unbound.
+Unbind `event` listener `fn` for `el`.
 
 
 ### binder.once(`el`, `event`, `[selector]`, `fn`, `[capture]`)
