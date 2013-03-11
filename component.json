@@ -1,0 +1,16 @@
+{
+  "name": "binder",
+  "version": "0.0.1",
+  "description": "high level common api for event/delegate",
+  "keywords": ["dom","bind","event","delegate"],
+  "author": "stagas",
+  "license": "MIT",
+  "dependencies": {
+    "component/event": "*",
+    "component/delegate": "*"
+  },
+  "development": {
+    "stagas/watch-js": "*"
+  },
+  "scripts": ["index.js"]
+}

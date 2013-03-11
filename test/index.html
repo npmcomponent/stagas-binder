@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>binder</title>
+    <link rel="stylesheet" href="../build/build.css">
+  </head>
+  <body>
+    <div id="container">
+      <div class="bar">
+        <button id="a">Click me</button>
+      </div>
+    </div>
+    <button id="b">And me</button>
+    <button id="c">Last one</button>
+    <script src="../build/build.js"></script>
+    <script>
+
+    var tests = 4
+
+    //
+
+    require('stagas-watch-js')
+
+    var binder = require('binder')
+    var A = document.getElementById('container')
+    var B = document.getElementById('b')
+    var C = document.getElementById('c')
+
+    var count = tests
+
+    // when passed selector
+    binder.on(A, 'click', '.bar button', onclickA)
+
+    // direct event
+    binder.on(B, 'click', onclickB)
+
+    // once
+    binder.once(C, 'click', onclickC)
+
+    function onclickA (ev) {
+      assert('a'===ev.target.id)
+      if ('again'==ev.target.textContent) {
+        binder.off(A, 'click', onclickA)
+        ev.target.textContent = 'should never change again'
+        --count || finish()
+        return
+      }
+      ev.target.textContent = 'again'
+      --count || finish()
+    }
+
+    var visitedB // because we never unbind
+    function onclickB (ev) {
+      assert('b'===ev.target.id)
+      if (!visitedB) {
+        ev.target.textContent = 'thank you'
+        visitedB = true
+        --count || finish()
+      }
+    }
+
+    function onclickC (ev) {
+      assert('c'===ev.target.id)
+      alert('should alert once')
+      --count || finish()
+    }
+
+    function finish () {
+      var div = document.createElement('div')
+      div.textContent = 'tests passed'
+      document.body.appendChild(div)
+    }
+
+    function assert (expr) {
+      if (!expr) throw new Error('failed')
+    }
+
+    </script>
+  </body>
+</html>
