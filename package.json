@@ -1,0 +1,16 @@
+{
+  "name": "stagas-binder",
+  "description": "high level common api for event/delegate",
+  "version": "0.0.1",
+  "keywords": [
+    "dom",
+    "bind",
+    "event",
+    "delegate"
+  ],
+  "dependencies": {
+    "component-event": "git://github.com/npmcomponent/component-event.git",
+    "component-delegate": "git://github.com/npmcomponent/component-delegate.git"
+  },
+  "license": "MIT"
+}

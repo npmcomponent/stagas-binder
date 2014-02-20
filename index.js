@@ -11,8 +11,8 @@
  * Module dependencies.
  */
 
-var events = require('event');
-var delegate = require('delegate');
+var events = require('component-event');
+var delegate = require('component-delegate');
 
 /**
  * Bind to `event` for `el` and invoke `fn(e)`.
